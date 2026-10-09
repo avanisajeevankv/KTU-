@@ -1,0 +1,125 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    font-family: 'Inter', system-ui, sans-serif;
+    background-color: #F8FAFF;
+    color: #0F172A;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  :focus-visible {
+    outline: 2px solid #6366F1;
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply inline-flex items-center gap-2 px-5 py-2.5 bg-ktu-navy text-white rounded-lg font-medium text-sm
+           hover:bg-navy-800 active:scale-95 transition-all duration-150 shadow-sm;
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center gap-2 px-5 py-2.5 bg-white text-ktu-navy border border-navy-200 rounded-lg font-medium text-sm
+           hover:bg-navy-50 active:scale-95 transition-all duration-150 shadow-sm;
+  }
+
+  .btn-accent {
+    @apply inline-flex items-center gap-2 px-5 py-2.5 rounded-lg font-medium text-sm text-white
+           bg-gradient-to-r from-ktu-violet to-ktu-cyan
+           hover:opacity-90 active:scale-95 transition-all duration-150 shadow-sm;
+  }
+
+  .card {
+    @apply bg-white rounded-2xl shadow-card border border-slate-100 p-6;
+  }
+
+  .card-hover {
+    @apply card hover:shadow-card-hover hover:-translate-y-0.5 transition-all duration-200;
+  }
+
+  .badge {
+    @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium;
+  }
+
+  .badge-blue   { @apply badge bg-blue-50 text-blue-700; }
+  .badge-green  { @apply badge bg-emerald-50 text-emerald-700; }
+  .badge-amber  { @apply badge bg-amber-50 text-amber-700; }
+  .badge-red    { @apply badge bg-red-50 text-red-700; }
+  .badge-violet { @apply badge bg-violet-50 text-violet-700; }
+  .badge-cyan   { @apply badge bg-cyan-50 text-cyan-700; }
+
+  .section-label {
+    @apply text-xs font-semibold tracking-widest text-ktu-violet uppercase mb-2;
+  }
+
+  .section-title {
+    @apply text-2xl md:text-3xl font-bold text-ktu-blue;
+  }
+
+  .input-field {
+    @apply w-full px-4 py-2.5 rounded-lg border border-slate-200 bg-white text-slate-800 text-sm
+           focus:border-ktu-violet focus:ring-2 focus:ring-violet-100 outline-none transition;
+  }
+
+  .sample-badge {
+    @apply inline-flex items-center gap-1 px-2 py-0.5 bg-amber-50 border border-amber-200 text-amber-700 rounded-md text-xs font-medium;
+  }
+}
+
+@layer utilities {
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+
+  .glass {
+    background: rgba(255,255,255,0.7);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+  }
+}
+
+/* Chatbot transition */
+.chatbot-enter {
+  opacity: 0;
+  transform: translateY(16px) scale(0.97);
+}
+.chatbot-enter-active {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  transition: all 0.22s cubic-bezier(0.4,0,0.2,1);
+}
+.chatbot-exit {
+  opacity: 1;
+}
+.chatbot-exit-active {
+  opacity: 0;
+  transform: translateY(16px) scale(0.97);
+  transition: all 0.18s cubic-bezier(0.4,0,0.2,1);
+}
+
+/* Mobile nav */
+.mobile-nav-enter {
+  transform: translateX(100%);
+}
+.mobile-nav-enter-active {
+  transform: translateX(0);
+  transition: transform 0.25s cubic-bezier(0.4,0,0.2,1);
+}
